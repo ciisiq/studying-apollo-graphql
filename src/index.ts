@@ -34,3 +34,17 @@ const resolvers = {
     books: () => books,
   },
 };
+
+// Step 6: Create an instance of ApolloServer
+// The ApolloServer constructor requires two parameters: your schema
+// definition and your set of resolvers.
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
+
+const { url } = await startStandaloneServer(server, {
+  listen: { port: 4000 },
+});
+
+console.log(`🎉 Server ready at: ${url}`);
